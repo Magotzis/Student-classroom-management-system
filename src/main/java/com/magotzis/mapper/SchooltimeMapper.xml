@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.magotzis.mapper.SchooltimeMapper">
+
+	<resultMap type="Schooltime" id="schooltimeRM">
+	</resultMap>
+	<!-- 上面是一个整体 -->
+
+	<insert id="insert" parameterType="Schooltime">
+	</insert>
+
+	<delete id="deleteById" parameterType="String">
+	</delete>
+
+	<update id="update" parameterType="Schooltime">
+	</update>
+
+	<select id="getById" parameterType="String" resultType="Schooltime">
+	</select>
+
+	<select id="list" parameterType="Schooltime" resultMap="schooltimeRM">
+	</select>
+
+	<select id="findByPage" parameterType="Schooltime" resultMap="schooltimeRM">
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="findApplyByPage" parameterType="String" resultMap="schooltimeRM">
+		select s.cno,s.gtime,s.state,l.lname lno from `schooltime` s,`lesson` l where s.apply_id = #{id} 
+		and s.state in ('T','N','P') and l.lno = s.lno
+	</select>
+	
+	<!-- 学生审批分页查询 -->
+	<resultMap type="StudentApprovedVo" id="studentApprovedVo">
+	</resultMap>
+	<select id="findStudentApprovedByPage" parameterType="String" resultMap="studentApprovedVo">
+		select g.*,s.sname,s.sno from `schooltime` g,`student` s 
+		where g.apply = #{apply} and g.state = 'N'
+		and s.id = g.apply_id
+	</select>
+	
+	<!-- 老师审批分页查询 -->
+	<resultMap type="TeacherApprovedVo" id="teacherApprovedVo">
+	</resultMap>
+	<select id="findTeacherApprovedByPage" parameterType="String" resultMap="teacherApprovedVo">
+		select g.*,t.tname,t.tno,l.lname from `schooltime` g,`teacher` t,`lesson` l 
+		where g.apply = #{apply} and g.state = 'N'
+		and t.id = g.apply_id and l.lno = g.lno
+	</select>
+	
+</mapper>

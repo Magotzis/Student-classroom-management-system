@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.magotzis.mapper.LessonMapper">
+
+	<resultMap type="Lesson" id="lessonRM">
+	</resultMap>
+	<!-- 上面是一个整体 -->
+
+	<insert id="insert" parameterType="Lesson">
+	</insert>
+
+	<delete id="deleteById" parameterType="String">
+	</delete>
+
+	<update id="update" parameterType="Lesson">
+	</update>
+
+	<select id="getById" parameterType="String" resultType="Lesson">
+	</select>
+
+	<select id="list" parameterType="Lesson" resultMap="lessonRM">
+	</select>
+
+	<select id="findByPage" parameterType="Lesson" resultMap="lessonRM">
+	</select>
+
+	<resultMap type="LessonVo" id="lessonVo">
+	</resultMap>
+	<!-- 分页查找课程 -->
+	<select id="findLessonByPage" parameterType="Lesson" resultMap="lessonVo">
+		select l.*,t.tname,t.tsex,t.ttitle from `lesson` l,`teacher` t where
+		l.tno = t.tno and l.state = 'T' order by lno desc
+	</select>
+
+	<!-- 批量删除课程 -->
+	<update id="batchUpdateLesson" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index"
+			separator=";">
+			UPDATE `lesson` SET state=#{item.state} WHERE id=#{item.id}
+		</foreach>
+	</update>
+
+	<!-- 根据ID查找单个课程的信息 -->
+	<select id="findLessonById" parameterType="String" resultMap="lessonVo">
+		select l.*,t.tname,t.tsex,t.ttitle from `lesson` l,`teacher` t where
+		l.tno = t.tno and l.state = 'T' and l.id=#{id}
+	</select>
+
+	<!-- 课程名是否重复 -->
+	<select id="findLessonByLno" parameterType="String" resultMap="lessonRM">
+		select * from `lesson` where lno = #{lno}
+	</select>
+
+	<!-- 查找课程列表 -->
+	<select id="findLessonByList" parameterType="String" resultMap="lessonRM">
+		select * from `lesson` where state = 'T'
+		<if test="value != null and value !=''">
+			and tno = #{value}
+		</if>
+	</select>
+	
+	<!-- 导出excel的查找课程列表 -->
+	<select id="findLessonVoByList" resultMap="lessonVo">
+		select l.*,t.tname,t.tsex,t.ttitle from `lesson` l,`teacher` t 
+		where l.state = 'T' and t.tno = l.tno
+	</select>
+	
+	<resultMap type="ArrangementVo" id="arrangementVo">
+	</resultMap>
+	<!-- 分页查找课程 -->
+	<select id="findArrangementByPage" parameterType="String" resultMap="arrangementVo">
+		select l.lno,l.lname,l.lcredit,s.gtime,s.id from `lesson` l,`schooltime` s 
+		where l.state = 'T' and l.lno = s.lno and l.lno = #{lno} and s.state = 'T'
+	</select>
+
+</mapper>

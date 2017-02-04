@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.magotzis.mapper.StudentMapper">
+
+	<resultMap type="Student" id="studentRM">
+	</resultMap>
+	<!-- 上面是一个整体 -->
+
+	<insert id="insert" parameterType="Student">
+	</insert>
+
+	<delete id="deleteById" parameterType="String">
+	</delete>
+
+	<update id="update" parameterType="Student">
+	</update>
+
+	<select id="getById" parameterType="String" resultType="Student">
+	</select>
+
+	<select id="list" parameterType="Student" resultMap="studentRM">
+	</select>
+
+	<select id="findByPage" parameterType="Student" resultMap="studentRM">
+	</select>
+	
+	<!-- 登陆方法 -->
+	<select id="login" parameterType="UserLoginVo" resultMap="studentRM">
+		select * from `student` where sno = #{username} 
+		and password = #{password} and state = 'T'
+	</select>
+	
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.magotzis.mapper.AdminMapper">
+
+	<resultMap type="Admin" id="adminRM">
+	</resultMap>
+	<!-- 上面是一个整体 -->
+
+	<insert id="insert" parameterType="Admin">
+	</insert>
+
+	<delete id="deleteById" parameterType="String">
+	</delete>
+
+	<update id="update" parameterType="Admin">
+	</update>
+
+	<select id="getById" parameterType="String" resultType="Admin">
+	</select>
+
+	<select id="list" parameterType="Admin" resultMap="adminRM">
+	</select>
+
+	<select id="findByPage" parameterType="Admin" resultMap="adminRM">
+	</select>
+
+	<!-- 登陆方法 -->
+	<select id="login" parameterType="UserLoginVo" resultMap="adminRM">
+		select * from `admin` where login_name = #{username}
+		and password = #{password} and state = 'T'
+	</select>
+
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!--对于下划线命名的数据库列名和驼峰命名的实体类po（必须返回一个bean不能返回map）之间完成自动映射 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!--使用log4j  -->
+		<setting name="logImpl" value="LOG4J" />
+	</settings>
+
+</configuration>

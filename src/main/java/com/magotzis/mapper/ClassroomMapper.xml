@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.magotzis.mapper.ClassroomMapper">
+
+	<resultMap type="Classroom" id="classroomRM">
+	</resultMap>
+
+	<!-- 上面是一个整体 -->
+
+	<insert id="insert" parameterType="Classroom">
+	</insert>
+
+	<delete id="deleteById" parameterType="String">
+	</delete>
+
+	<update id="update" parameterType="Classroom">
+	</update>
+
+	<select id="getById" parameterType="String" resultType="Classroom">
+	</select>
+
+	<select id="list" parameterType="Classroom" resultMap="classroomRM">
+	</select>
+
+	<select id="findByPage" parameterType="Classroom" resultMap="classroomRM">
+	</select>
+
+	<!-- 分页查找教室 -->
+	<select id="findClassroomByPage" parameterType="Classroom"
+		resultMap="classroomRM">
+		select * from `classroom` where state = 'T' order by cno
+		desc
+	</select>
+
+	<select id="findFreeClassroomByPage" parameterType="FreeClassroomVo"
+		resultMap="classroomRM">
+		select * from `classroom` c where state ='T' 
+		<if test="cdevice != null and cdevice !=''">
+			and cdevice like CONCAT(CONCAT('%', #{cdevice}),'%')
+		</if>
+		and cnumber >= #{cnumber} 
+		and not exists(select * from `schooltime` s where state = 'T' 
+		and gtime = #{gtime} and s.cno = c.cno)
+	</select>
+
+	<!-- 批量删除教室 -->
+	<update id="batchUpdateClassroom" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index"
+			separator=";">
+			UPDATE `classroom` SET state=#{item.state} WHERE
+			id=#{item.id}
+		</foreach>
+	</update>
+
+	<!-- 课室名是否重复 -->
+	<select id="findClassroomByCno" parameterType="String"
+		resultMap="classroomRM">
+		select * from `classroom` where cno = #{cno}
+	</select>
+	
+		<!-- 导出excel的查找课程列表 -->
+	<select id="findClassroomByList" resultMap="classroomRM">
+		select * from `classroom` where state = 'T'
+	</select>
+
+</mapper>
