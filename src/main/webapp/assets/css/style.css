@@ -144,9 +144,9 @@ img { max-width: 100%; }
 	height: 100px;
 }
 
-.form-bottom form button.btn {
-	width: 100%;
-}
+/*.form-bottom form button.btn {
+	width: 50%;
+}*/
 
 .form-bottom form .input-error {
 	border-color: #4aaf51;

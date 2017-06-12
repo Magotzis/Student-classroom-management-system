@@ -24,4 +24,9 @@ public class AdminServiceImpl extends BaseServiceImpl<Admin, String>implements A
 		return adminMapper.login(userLoginVo);
 	}
 
+	@Override
+	public Admin getUserByUserName(String username) {
+		return adminMapper.getUserByUserName(username);
+	}
+
 }

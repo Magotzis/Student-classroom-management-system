@@ -32,4 +32,8 @@
 		and password = #{password} and state = 'T'
 	</select>
 	
+	<select id="getByUserName" parameterType="String" resultMap="studentRM">
+		select * from `student` where sno = #{sno} and state = 'T'
+	</select>
+	
 </mapper>

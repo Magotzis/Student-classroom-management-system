@@ -7,6 +7,7 @@ public class Teacher extends BasePo implements Serializable {
 
 	private String tno;// 教师号
 	private String tname;// 姓名
+	private String password;
 	private String tsex; // 性别
 	private String ttitle;// 职称
 	private String state;// 状态
@@ -49,6 +50,14 @@ public class Teacher extends BasePo implements Serializable {
 
 	public void setTsex(String tsex) {
 		this.tsex = tsex;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

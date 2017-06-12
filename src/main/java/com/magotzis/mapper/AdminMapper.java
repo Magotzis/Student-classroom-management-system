@@ -10,4 +10,6 @@ public interface AdminMapper extends BaseMapper<Admin, String> {
 
 	Admin login(UserLoginVo userLoginVo);
 
+	Admin getUserByUserName(String username);
+
 }

@@ -11,5 +11,7 @@ public interface TeacherService extends BaseService<Teacher, String> {
 
 	Teacher login(UserLoginVo userLoginVo);
 
+	Teacher getByUserName(String tno);
+
 
 }

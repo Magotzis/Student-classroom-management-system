@@ -58,7 +58,10 @@
                                             <option value="A">管理员</option>
                                         </select>
                                     </div>
-			                        <button type="button" id="login-btn" class="btn">登录</button>
+                                    <div class="row">
+                                        <button type="button" id="login-btn" class="col-md-6 col-xs-6 btn btn-success">登录</button>
+                                        <button type="button" id="register-btn" class="col-md-6 col-xs-6 btn btn-warning">注册</button>
+                                    </div>
 			                    </form>
 		                    </div>
                         </div>

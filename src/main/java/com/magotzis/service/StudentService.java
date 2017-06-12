@@ -7,5 +7,7 @@ public interface StudentService extends BaseService<Student, String> {
 
 	Student login(UserLoginVo userLoginVo);
 
+	Student getByUserName(String sno);
+
 
 }

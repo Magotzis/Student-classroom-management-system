@@ -7,6 +7,7 @@ public class Student extends BasePo implements Serializable {
 
 	private String sno;// 学号
 	private String sname;// 姓名
+	private String password;
 	private String ssex;// 性别
 	private String sdept;// 系别
 	private String state;// 状态
@@ -49,6 +50,14 @@ public class Student extends BasePo implements Serializable {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

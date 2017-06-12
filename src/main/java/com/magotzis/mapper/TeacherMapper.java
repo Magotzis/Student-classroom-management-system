@@ -14,4 +14,6 @@ public interface TeacherMapper extends BaseMapper<Teacher, String> {
 
 	Teacher login(UserLoginVo userLoginVo);
 
+	Teacher getByUserName(String tno);
+
 }

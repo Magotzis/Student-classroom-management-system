@@ -25,16 +25,22 @@
 
 	<select id="findByPage" parameterType="Teacher" resultMap="teacherRM">
 	</select>
-	
+
 	<!-- 查找教师列表 -->
 	<select id="getTeacherByList" resultMap="teacherRM">
-		select * from `teacher` where state = 'T'
+		select * from `teacher`
+		where state = 'T'
 	</select>
-	
+
 	<!-- 登陆方法 -->
 	<select id="login" parameterType="UserLoginVo" resultMap="teacherRM">
-		select * from `teacher` where tno = #{username} 
+		select
+		* from `teacher` where tno = #{username}
 		and password = #{password} and state = 'T'
 	</select>
-	
+
+	<select id="getByUserName" parameterType="String" resultMap="teacherRM">
+		select * from `teacher` where tno = #{sno} and state = 'T'
+	</select>
+
 </mapper>

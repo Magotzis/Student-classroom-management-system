@@ -24,4 +24,9 @@ public class StudentServiceImpl extends BaseServiceImpl<Student, String>implemen
 		return studentMapper.login(userLoginVo);
 	}
 
+	@Override
+	public Student getByUserName(String sno) {
+		return studentMapper.getByUserName(sno);
+	}
+
 }

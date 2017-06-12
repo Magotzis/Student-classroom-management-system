@@ -163,7 +163,7 @@ public class LessonManagementController {
 			String title = new String("sheet 1");
 			String excelName = new String("课程一览表");
 			// 创建表头信息
-			List<String> header = new ArrayList<>();
+			List<String> header = new ArrayList<String>();
 			header.add("课程号");
 			header.add("课程名");
 			header.add("学分");
@@ -173,7 +173,7 @@ public class LessonManagementController {
 			/**
 			 * 创建具体信息
 			 */
-			List<List<String>> data = new ArrayList<>();
+			List<List<String>> data = new ArrayList<List<String>>();
 			// 只查询有效用户的密码
 			List<LessonVo> lessonList = lessonService.findLessonVoByList();
 			if (lessonList.size() <= 0) {
@@ -181,7 +181,7 @@ public class LessonManagementController {
 			}
 			// 循环遍历插入data数据列中
 			for (LessonVo lessonVo : lessonList) {
-				List<String> row = new ArrayList<>();
+				List<String> row = new ArrayList<String>();
 				row.add(lessonVo.getLno());
 				row.add(lessonVo.getLname());
 				row.add(lessonVo.getLcredit());

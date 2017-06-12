@@ -10,4 +10,6 @@ public interface StudentMapper extends BaseMapper<Student, String> {
 
 	Student login(UserLoginVo userLoginVo);
 
+	Student getByUserName(String sno);
+
 }

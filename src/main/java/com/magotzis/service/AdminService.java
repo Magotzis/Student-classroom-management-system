@@ -7,5 +7,7 @@ public interface AdminService extends BaseService<Admin, String> {
 
 	Admin login(UserLoginVo userLoginVo);
 
+	Admin getUserByUserName(String username);
+
 
 }

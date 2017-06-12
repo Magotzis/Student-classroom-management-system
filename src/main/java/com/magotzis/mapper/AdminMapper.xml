@@ -31,5 +31,9 @@
 		select * from `admin` where login_name = #{username}
 		and password = #{password} and state = 'T'
 	</select>
+	
+	<select id="getUserByUserName" parameterType="String" resultType="Admin">
+		select * from `admin` where login_name = #{username} and state = 'T'
+	</select>
 
 </mapper>

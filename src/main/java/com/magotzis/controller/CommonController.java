@@ -108,5 +108,45 @@ public class CommonController {
 		}
 		return resultMap;
 	}
+	
+	@RequestMapping("studentRegister") 
+	@ResponseBody
+	public ResultMap studentRegister(Student student){
+		ResultMap resultMap = new ResultMap();
+		try {
+			Student bean =studentService.getByUserName(student.getSno());
+			if(bean != null){
+				resultMap.fail().info("当前用户名已存在！");
+			}else{
+				student.setState("T");
+				studentService.add(student);
+				resultMap.success().info("注册成功");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultMap.fail().info("fail");
+		}
+		return resultMap;
+	}
+	
+	@RequestMapping("teacherRegister") 
+	@ResponseBody
+	public ResultMap teacherRegister(Teacher teacher){
+		ResultMap resultMap = new ResultMap();
+		try {
+			Teacher bean =teacherService.getByUserName(teacher.getTno());
+			if(bean != null){
+				resultMap.fail().info("当前用户名已存在！");
+			}else{
+				teacher.setState("T");
+				teacherService.add(teacher);
+				resultMap.success().info("注册成功");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultMap.fail().info("fail");
+		}
+		return resultMap;
+	}
 
 }

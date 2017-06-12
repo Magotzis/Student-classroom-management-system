@@ -31,4 +31,9 @@ public class TeacherServiceImpl extends BaseServiceImpl<Teacher, String>implemen
 		return teacherMapper.login(userLoginVo);
 	}
 
+	@Override
+	public Teacher getByUserName(String tno) {
+		return teacherMapper.getByUserName(tno);
+	}
+
 }

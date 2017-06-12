@@ -146,7 +146,7 @@ public class ClassroomManagementController {
 			String title = new String("sheet 1");
 			String excelName = new String("教室一览表");
 			// 创建表头信息
-			List<String> header = new ArrayList<>();
+			List<String> header = new ArrayList<String>();
 			header.add("教室名称");
 			header.add("座位数");
 			header.add("教室设备");
@@ -154,7 +154,7 @@ public class ClassroomManagementController {
 			/**
 			 * 创建具体信息
 			 */
-			List<List<String>> data = new ArrayList<>();
+			List<List<String>> data = new ArrayList<List<String>>();
 			// 只查询有效用户的密码
 			List<Classroom> classroomList = classroomService.findClassroomByList();
 			if (classroomList.size() <= 0) {
@@ -162,7 +162,7 @@ public class ClassroomManagementController {
 			}
 			// 循环遍历插入data数据列中
 			for (Classroom classroom : classroomList) {
-				List<String> row = new ArrayList<>();
+				List<String> row = new ArrayList<String>();
 				row.add(classroom.getCno());
 				row.add(String.valueOf(classroom.getCnumber()));
 				row.add(classroom.getCdevice());
